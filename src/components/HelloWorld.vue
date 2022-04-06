@@ -67,6 +67,7 @@
         >
       </li>
       <li>
+      test
         <a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a>
       </li>
       <li>
