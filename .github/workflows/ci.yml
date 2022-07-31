@@ -9,7 +9,7 @@ defaults:
   run:
     shell: bash
 jobs:
-  terraform:
+  ci:
     name: "Terraform"
     runs-on: ubuntu-latest
     env:
