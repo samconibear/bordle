@@ -10,7 +10,7 @@ defaults:
     shell: bash
 jobs:
   ci:
-    name: "Terraform"
+    name: "Terraform CI"
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}

@@ -7,6 +7,9 @@ on:
 
 jobs:
   cd:
+    name: "Terraform CD"
+    runs-on: ubuntu-latest
+    steps: 
   - name: "Checkout"
     uses: actions/checkout@v3
 
@@ -18,11 +21,10 @@ jobs:
 
   - name: "Terraform Plan"
     run: terraform plan
-  runs-on: ubuntu-latest
-  steps:
+
     - uses: actions/checkout@v2
     - uses: actions/setup-node@1
     with:
-    node-version: 12
-    - run: echo "running CD pipeline"
-    - run: npm run build
+      node-version: 12
+      - run: echo "running CD pipeline"
+      - run: npm run build
