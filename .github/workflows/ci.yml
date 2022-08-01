@@ -2,14 +2,12 @@ name: NodeJS CI
 
 on:
   push:
-    branches:
-      - main
-      - master
+    branches: [ $default-branch ]
   pull_request:
-    branches:
-      - main
-      - master
-
+    branches: [ $default-branch ]
+defaults:
+  run:
+    shell: bash
 jobs:
   ci:
     name: "Terraform CI"
@@ -29,9 +27,6 @@ jobs:
 
     - name: "Setup Terraform"
       uses: hashicorp/setup-terraform@v1
-
-    - name: Terraform Format
-      run: terraform fmt -check
     
     - name: "Initialise Terraform"
       run: terraform init
