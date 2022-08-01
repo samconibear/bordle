@@ -2,7 +2,9 @@ name: NodeJS CD
 
 on:
   pull request:
-    branches: [ master, main ]
+    branches: 
+      - master
+      - main
 
 
 jobs:

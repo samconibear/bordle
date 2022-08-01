@@ -2,12 +2,14 @@ name: NodeJS CI
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches:
+      - main
+      - master
   pull_request:
-    branches: [ $default-branch ]
-defaults:
-  run:
-    shell: bash
+    branches:
+      - main
+      - master
+
 jobs:
   ci:
     name: "Terraform CI"
