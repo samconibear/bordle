@@ -12,21 +12,21 @@ jobs:
     name: "Terraform CD"
     runs-on: ubuntu-latest
     steps: 
-  - name: "Checkout"
-    uses: actions/checkout@v3
+      - name: "Checkout"
+        uses: actions/checkout@v3
 
-  - name: "Setup Terraform"
-    uses: hashicorp/etup-terraform@v1
-  
-  - name: "Initialise Terraform"
-    run: terraform init
+      - name: "Setup Terraform"
+        uses: hashicorp/etup-terraform@v1
+      
+      - name: "Initialise Terraform"
+        run: terraform init
 
-  - name: "Terraform Plan"
-    run: terraform plan
+      - name: "Terraform Plan"
+        run: terraform plan
 
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@1
-    with:
-      node-version: 12
-      - run: echo "running CD pipeline"
-      - run: npm run build
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@1
+      with:
+        node-version: 12
+        - run: echo "running CD pipeline"
+        - run: npm run build
