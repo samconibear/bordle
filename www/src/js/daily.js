@@ -45,7 +45,6 @@ export function todaysCountry() {
 export function todaysChoices() {
   // Return the object from countries.js that corresponds to todays date.
   let dateCode = genDateCode();
-  console.log(dateCode);
   const countryIndexes = [
     hash(dateCode, 1),
     hash(dateCode, 2),
