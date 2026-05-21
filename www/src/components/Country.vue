@@ -15,7 +15,7 @@
         :class="[country.cssFilter, hoverCssFilter]"
       >
     </div>
-    <div class="absolute inset-x-0 top-full text-center text-sm font-semibold h-5 leading-5 truncate">
+    <div class="absolute inset-x-0 top-full text-center text-sm h-5 leading-5 truncate">
       {{ selected ? country.name : '' }}
     </div>
   </div>
