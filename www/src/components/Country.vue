@@ -37,7 +37,7 @@ export default {
   ],
   methods: {
     getSvg: function(country) {
-      return require(`/public/svg/countries/${country.code.toLowerCase()}/vector.svg`);
+      return `/svg/countries/${country.code.toLowerCase()}/vector.svg`;
     },
     onClickCountry: function (chosenCountry) {
       if (chosenCountry === this.countryToGuess) {
