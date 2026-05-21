@@ -15,6 +15,9 @@
         :class="[country.cssFilter, hoverCssFilter]"
       >
     </div>
+    <div v-if="selected" class="text-center text-sm font-semibold mt-1">
+      {{ country.name }}
+    </div>
   </div>
 </template>
 
@@ -25,6 +28,7 @@ export default {
     return {
       hoverCssFilter: '',
       animationClass: '',
+      selected: false,
     }
   },
   props: [
@@ -43,6 +47,7 @@ export default {
         chosenCountry.cssFilter = "filter-incorrect";
         this.animationClass = 'animate-shake';
       }
+      this.selected = true;
       this.$forceUpdate();
     },
   },
