@@ -6,7 +6,6 @@ function genDateCode() {
     dt.getDate().toString() +
     dt.getMonth().toString() +
     dt.getFullYear().toString();
-  dateCode = '2102314142';
   return dateCode;
 }
 
@@ -18,7 +17,7 @@ function hash(str, hashCode) {
     char = str.charCodeAt(i);
     hash = ((hash << hashCode) - hash) + char;
     hash = hash & hash; // Convert to 32bit integer
-    hash = hash % num_countries;
+    hash = ((hash % num_countries) + num_countries) % num_countries;
   }
   return hash;
 }
