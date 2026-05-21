@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="relative">
     <div
       class="rounded border-2 border-black border-solid"
       :class="animationClass"
@@ -15,7 +15,7 @@
         :class="[country.cssFilter, hoverCssFilter]"
       >
     </div>
-    <div class="text-center text-sm font-semibold mt-1 h-5 leading-5 truncate">
+    <div class="absolute inset-x-0 top-full text-center text-sm font-semibold h-5 leading-5 truncate">
       {{ selected ? country.name : '' }}
     </div>
   </div>
