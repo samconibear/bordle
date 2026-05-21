@@ -55,19 +55,7 @@ export default {
       return this.countriesChoices.slice(); // copy
     }
   },
-  methods: {
-    onClickCountry: function (chosenCountry) {
-      if (chosenCountry === this.countryToGuess) {
-        chosenCountry.cssFilter = "filter-correct";
-        console.log(chosenCountry.cssFilter)
-      } else {
-        chosenCountry.cssFilter = "filter-incorrect";
-        console.log(chosenCountry.cssFilter)
-      }
-    },
-  },
   mounted: function() {
-    console.log('mounted')
     this.countryToGuess   = daily.todaysCountry();
     this.countriesChoices = daily.todaysChoices();
   },
