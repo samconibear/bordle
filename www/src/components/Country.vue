@@ -15,8 +15,8 @@
         :class="[country.cssFilter, hoverCssFilter]"
       >
     </div>
-    <div v-if="selected" class="text-center text-sm font-semibold mt-1">
-      {{ country.name }}
+    <div class="text-center text-sm font-semibold mt-1 h-5 leading-5 truncate">
+      {{ selected ? country.name : '' }}
     </div>
   </div>
 </template>
