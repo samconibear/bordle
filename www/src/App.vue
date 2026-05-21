@@ -7,7 +7,7 @@
         class="py-1 md:py-5"
       />
       <div class="
-      grid mx-auto justify-items-center gap-4 max-w-max
+      grid mx-auto justify-items-center gap-6 max-w-max
       grid-cols-2
       md:grid-cols-4 
       ">

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="relative">
     <div
       class="rounded border-2 border-black border-solid"
       :class="animationClass"
@@ -15,6 +15,9 @@
         :class="[country.cssFilter, hoverCssFilter]"
       >
     </div>
+    <div class="absolute inset-x-0 top-full text-center text-sm h-5 leading-5 truncate">
+      {{ selected ? country.name : '' }}
+    </div>
   </div>
 </template>
 
@@ -25,6 +28,7 @@ export default {
     return {
       hoverCssFilter: '',
       animationClass: '',
+      selected: false,
     }
   },
   props: [
@@ -43,6 +47,7 @@ export default {
         chosenCountry.cssFilter = "filter-incorrect";
         this.animationClass = 'animate-shake';
       }
+      this.selected = true;
       this.$forceUpdate();
     },
   },
