@@ -1,13 +1,9 @@
 <template>
   <div>
-    <div 
-      class=
-      "
-      rounded border-2 
-      border-black 
-      border-solid 
-
-      "
+    <div
+      class="rounded border-2 border-black border-solid"
+      :class="animationClass"
+      @animationend="animationClass = ''"
     >
       <img
         @mouseover="hoverCssFilter  = 'filter-hover';"
@@ -28,6 +24,7 @@ export default {
   data: function() {
     return {
       hoverCssFilter: '',
+      animationClass: '',
     }
   },
   props: [
@@ -41,8 +38,10 @@ export default {
     onClickCountry: function (chosenCountry) {
       if (chosenCountry === this.countryToGuess) {
         chosenCountry.cssFilter = "filter-correct";
+        this.animationClass = 'animate-victory';
       } else {
         chosenCountry.cssFilter = "filter-incorrect";
+        this.animationClass = 'animate-shake';
       }
       this.$forceUpdate();
     },
@@ -59,5 +58,32 @@ export default {
 }
 .filter-correct {
   filter: invert(51%) sepia(31%) saturate(1218%) hue-rotate(56deg) brightness(112%) contrast(89%);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15%       { transform: translateX(-8px); }
+  30%       { transform: translateX(8px); }
+  45%       { transform: translateX(-6px); }
+  60%       { transform: translateX(6px); }
+  75%       { transform: translateX(-3px); }
+  90%       { transform: translateX(3px); }
+}
+
+@keyframes victory {
+  0%   { transform: scale(1); }
+  25%  { transform: scale(1.18) rotate(-3deg); }
+  50%  { transform: scale(1.12) rotate(3deg); }
+  70%  { transform: scale(1.06) rotate(-1deg); }
+  85%  { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.animate-victory {
+  animation: victory 0.6s ease-in-out;
 }
 </style>
