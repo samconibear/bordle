@@ -1,6 +1,6 @@
 import { countries } from "@/assets/countries.js"
 
-function genDateCode() {
+export function genDateCode() {
   const dt = new Date();
   let dateCode =
     dt.getDate().toString() +
@@ -9,7 +9,7 @@ function genDateCode() {
   return dateCode;
 }
 
-function hash(str, hashCode) {
+export function hash(str, hashCode) {
   const num_countries = countries.length;
   let hash = 0, i, char;
   if (str.length == 0) return hash;
@@ -22,7 +22,7 @@ function hash(str, hashCode) {
   return hash;
 }
 
-function shuffle(array) {
+export function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
