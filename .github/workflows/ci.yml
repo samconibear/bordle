@@ -1,45 +1,37 @@
-name: NodeJS CI
+name: CI
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches: ["**"]
   pull_request:
-    branches: [ $default-branch ]
+    branches: ["**"]
+
 defaults:
   run:
-    shell: bash
+    working-directory: www
+
 jobs:
-  ci:
-    name: "Terraform CI"
+  unit-tests:
+    name: Unit Tests
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-      AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-      AWS_REGION: "eu-west-2"
+
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [18.x, 20.x]
 
     steps:
-    - name: "Checkout"
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: "Setup Terraform"
-      uses: hashicorp/setup-terraform@v1
-    
-    - name: "Initialise Terraform"
-      run: terraform init
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+          cache-dependency-path: www/package-lock.json
 
-    - name: "Terraform Plan"
-      run: terraform plan
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-        
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - name: Run unit tests
+        run: npm run test:unit
